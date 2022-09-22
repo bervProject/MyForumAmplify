@@ -3,28 +3,31 @@ type Post @model @auth(rules: [{allow: public, operations: [read]}, {allow: owne
   title: String!
   content: String!
   draft: Boolean!
-  comments: [Comment] @hasMany
-  likes: [PostLike] @hasMany
-  selectedComment: Comment @hasOne
+  comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
+  likes: [PostLike] @hasMany(indexName: "likebyPost", fields: ["id"])
+  selectedComment: Comment @hasOne(fields: ["id"])
   owner: String @auth(rules: [{allow: owner, operations: [read]}])
 }
 
 type PostLike @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
   id: ID!
-  post: Post @belongsTo
+  postID: ID!
+  post: Post @belongsTo(fields: ["postID"])
   owner: String @auth(rules: [{allow: owner, operations: [read]}])
 }
 
 type Comment @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
   id: ID!
-  post: Post @belongsTo
+  postID: ID! @index(name: "byPost", sortKeyFields: ["content"])
+  post: Post @belongsTo(fields: ["postID"])
   content: String!
-  likes: [CommentLike] @hasMany
+  likes: [CommentLike] @hasMany(fields: ["id"])
   owner: String @auth(rules: [{allow: owner, operations: [read]}])
 }
 
 type CommentLike @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
   id: ID!
-  comment: Comment @belongsTo
+  commentID: ID!
+  comment: Comment @belongsTo(fields: ["commentID"])
   owner: String @auth(rules: [{allow: owner, operations: [read]}])
 } 
