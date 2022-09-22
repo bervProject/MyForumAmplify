@@ -1,0 +1,13 @@
+{
+  "resourceName": "s3myforumamplifystorage5e09b0e6",
+  "bucketName": "myforumamplify-storage-5e09b0e6",
+  "policyUUID": "bcc239b5",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ",
+    "CREATE_AND_UPDATE"
+  ]
+}
