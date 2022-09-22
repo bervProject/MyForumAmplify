@@ -4,7 +4,7 @@ type Post @model @auth(rules: [{allow: public, operations: [read]}, {allow: owne
   content: String!
   draft: Boolean!
   comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
-  likes: [PostLike] @hasMany(indexName: "likebyPost", fields: ["id"])
+  likes: [PostLike] @hasMany(fields: ["id"])
   selectedComment: Comment @hasOne(fields: ["id"])
   owner: String @auth(rules: [{allow: owner, operations: [read]}])
 }
