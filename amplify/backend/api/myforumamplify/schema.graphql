@@ -6,14 +6,14 @@ type Post @model @auth(rules: [{allow: public, operations: [read]}, {allow: owne
   comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
   likes: [PostLike] @hasMany(fields: ["id"])
   selectedComment: Comment @hasOne(fields: ["id"])
-  owner: String @auth(rules: [{allow: owner, operations: [read]}])
+  owner: String @auth(rules: [{allow: public, operations: [read]}, {allow: owner}])
 }
 
 type PostLike @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
   id: ID!
   postID: ID!
   post: Post @belongsTo(fields: ["postID"])
-  owner: String @auth(rules: [{allow: owner, operations: [read]}])
+  owner: String @auth(rules: [{allow: public, operations: [read]}, {allow: owner}])])
 }
 
 type Comment @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
@@ -22,12 +22,12 @@ type Comment @model @auth(rules: [{allow: public, operations: [read]}, {allow: o
   post: Post @belongsTo(fields: ["postID"])
   content: String!
   likes: [CommentLike] @hasMany(fields: ["id"])
-  owner: String @auth(rules: [{allow: owner, operations: [read]}])
+  owner: String @auth(rules: [{allow: public, operations: [read]}, {allow: owner}])])
 }
 
 type CommentLike @model @auth(rules: [{allow: public, operations: [read]}, {allow: owner}]) {
   id: ID!
   commentID: ID!
   comment: Comment @belongsTo(fields: ["commentID"])
-  owner: String @auth(rules: [{allow: owner, operations: [read]}])
+  owner: String @auth(rules: [{allow: public, operations: [read]}, {allow: owner}])])
 } 
