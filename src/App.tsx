@@ -17,6 +17,7 @@ import { Route, Routes } from 'react-router-dom';
 import awsExports from './aws-exports';
 import Home from './pages/Home';
 import NewPost from './pages/NewPost';
+import DetailPost from './pages/DetailPost';
 Amplify.configure(awsExports);
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home user={user} signOut={signOut} />} />
               <Route path="/post/new" element={<NewPost />} />
+              <Route path="/post/:id" element={<DetailPost />} />
               <Route path="*" element={<Heading level={2}>404 - Not Found</Heading>} />
             </Routes>
           )}

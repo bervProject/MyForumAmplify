@@ -3,11 +3,12 @@ import {
     Button,
     Flex,
     Heading,
+    Text,
 } from "@aws-amplify/ui-react";
 import { API, graphqlOperation } from 'aws-amplify';
 import { listPosts } from '../graphql/queries';
 import { GraphQLResult } from "@aws-amplify/api-graphql";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home({ user, signOut }: any) {
     const navigate = useNavigate();
@@ -53,7 +54,30 @@ export default function Home({ user, signOut }: any) {
             wrap="nowrap"
             gap="1rem"
         >{posts.map((post: any) => (
-            <Heading level={3}>{post.title}</Heading>
+            <Flex
+                direction="column"
+                justifyContent="space-between"
+                alignItems="stretch"
+                alignContent="flex-start"
+                wrap="nowrap"
+                gap="1rem"
+            >
+                <Link to={`/post/${post.id}`}><Heading level={3}>{post.title}</Heading></Link>
+                <Flex
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="stretch"
+                    alignContent="flex-start"
+                    wrap="nowrap"
+                    gap="1rem"
+                >
+                    <Text>Last updated: {new Date(post.updatedAt).toLocaleString('en-US')}</Text>
+                    <Text>Created by: {post.owner}</Text>
+                    <Text>Likes: {post.likes?.items?.length ?? 0}</Text>
+                    <Text>Comments: {post.comments?.items?.length ?? 0}</Text>
+                </Flex>
+                <Text>{post.content}</Text>
+            </Flex>
         ))}</Flex>
     </Flex>);
 }
