@@ -12,6 +12,7 @@ export const getPost = /* GraphQL */ `
       comments {
         items {
           id
+          postID
           content
           owner
           createdAt
@@ -19,7 +20,6 @@ export const getPost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         nextToken
         startedAt
@@ -27,19 +27,20 @@ export const getPost = /* GraphQL */ `
       likes {
         items {
           id
+          postID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postLikesId
         }
         nextToken
         startedAt
       }
       selectedComment {
         id
+        postID
         post {
           id
           title
@@ -51,7 +52,6 @@ export const getPost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -64,7 +64,6 @@ export const getPost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -72,7 +71,6 @@ export const getPost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postSelectedCommentId
     }
   }
 `;
@@ -98,6 +96,7 @@ export const listPosts = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -105,7 +104,6 @@ export const listPosts = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -113,7 +111,6 @@ export const listPosts = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       nextToken
       startedAt
@@ -148,6 +145,7 @@ export const syncPosts = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -155,7 +153,6 @@ export const syncPosts = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -163,7 +160,6 @@ export const syncPosts = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       nextToken
       startedAt
@@ -174,6 +170,7 @@ export const getPostLike = /* GraphQL */ `
   query GetPostLike($id: ID!) {
     getPostLike(id: $id) {
       id
+      postID
       post {
         id
         title
@@ -189,6 +186,7 @@ export const getPostLike = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -196,7 +194,6 @@ export const getPostLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -204,7 +201,6 @@ export const getPostLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       owner
       createdAt
@@ -212,7 +208,6 @@ export const getPostLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postLikesId
     }
   }
 `;
@@ -225,6 +220,7 @@ export const listPostLikes = /* GraphQL */ `
     listPostLikes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        postID
         post {
           id
           title
@@ -236,7 +232,6 @@ export const listPostLikes = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         owner
         createdAt
@@ -244,7 +239,6 @@ export const listPostLikes = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postLikesId
       }
       nextToken
       startedAt
@@ -266,6 +260,7 @@ export const syncPostLikes = /* GraphQL */ `
     ) {
       items {
         id
+        postID
         post {
           id
           title
@@ -277,7 +272,6 @@ export const syncPostLikes = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         owner
         createdAt
@@ -285,7 +279,6 @@ export const syncPostLikes = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postLikesId
       }
       nextToken
       startedAt
@@ -296,6 +289,7 @@ export const getComment = /* GraphQL */ `
   query GetComment($id: ID!) {
     getComment(id: $id) {
       id
+      postID
       post {
         id
         title
@@ -311,6 +305,7 @@ export const getComment = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -318,7 +313,6 @@ export const getComment = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -326,19 +320,18 @@ export const getComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       content
       likes {
         items {
           id
+          commentID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          commentLikesId
         }
         nextToken
         startedAt
@@ -349,7 +342,6 @@ export const getComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
     }
   }
 `;
@@ -362,6 +354,7 @@ export const listComments = /* GraphQL */ `
     listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        postID
         post {
           id
           title
@@ -373,7 +366,6 @@ export const listComments = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -386,7 +378,6 @@ export const listComments = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       nextToken
       startedAt
@@ -408,6 +399,7 @@ export const syncComments = /* GraphQL */ `
     ) {
       items {
         id
+        postID
         post {
           id
           title
@@ -419,7 +411,6 @@ export const syncComments = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -432,7 +423,6 @@ export const syncComments = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       nextToken
       startedAt
@@ -443,8 +433,10 @@ export const getCommentLike = /* GraphQL */ `
   query GetCommentLike($id: ID!) {
     getCommentLike(id: $id) {
       id
+      commentID
       comment {
         id
+        postID
         post {
           id
           title
@@ -456,7 +448,6 @@ export const getCommentLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -469,7 +460,6 @@ export const getCommentLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -477,7 +467,6 @@ export const getCommentLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      commentLikesId
     }
   }
 `;
@@ -490,8 +479,10 @@ export const listCommentLikes = /* GraphQL */ `
     listCommentLikes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        commentID
         comment {
           id
+          postID
           content
           owner
           createdAt
@@ -499,7 +490,6 @@ export const listCommentLikes = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -507,7 +497,6 @@ export const listCommentLikes = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        commentLikesId
       }
       nextToken
       startedAt
@@ -529,8 +518,10 @@ export const syncCommentLikes = /* GraphQL */ `
     ) {
       items {
         id
+        commentID
         comment {
           id
+          postID
           content
           owner
           createdAt
@@ -538,7 +529,6 @@ export const syncCommentLikes = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -546,7 +536,6 @@ export const syncCommentLikes = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        commentLikesId
       }
       nextToken
       startedAt

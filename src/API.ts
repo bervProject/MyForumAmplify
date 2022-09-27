@@ -9,7 +9,6 @@ export type CreatePostInput = {
   draft: boolean,
   owner?: string | null,
   _version?: number | null,
-  postSelectedCommentId?: string | null,
 };
 
 export type ModelPostConditionInput = {
@@ -20,7 +19,6 @@ export type ModelPostConditionInput = {
   and?: Array< ModelPostConditionInput | null > | null,
   or?: Array< ModelPostConditionInput | null > | null,
   not?: ModelPostConditionInput | null,
-  postSelectedCommentId?: ModelIDInput | null,
 };
 
 export type ModelStringInput = {
@@ -70,6 +68,114 @@ export type ModelBooleanInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+export type Post = {
+  __typename: "Post",
+  id: string,
+  title: string,
+  content: string,
+  draft: boolean,
+  comments?: ModelCommentConnection | null,
+  likes?: ModelPostLikeConnection | null,
+  selectedComment?: Comment | null,
+  owner?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type ModelCommentConnection = {
+  __typename: "ModelCommentConnection",
+  items:  Array<Comment | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type Comment = {
+  __typename: "Comment",
+  id: string,
+  postID: string,
+  post?: Post | null,
+  content: string,
+  likes?: ModelCommentLikeConnection | null,
+  owner?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type ModelCommentLikeConnection = {
+  __typename: "ModelCommentLikeConnection",
+  items:  Array<CommentLike | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type CommentLike = {
+  __typename: "CommentLike",
+  id: string,
+  commentID: string,
+  comment?: Comment | null,
+  owner?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type ModelPostLikeConnection = {
+  __typename: "ModelPostLikeConnection",
+  items:  Array<PostLike | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type PostLike = {
+  __typename: "PostLike",
+  id: string,
+  postID: string,
+  post?: Post | null,
+  owner?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdatePostInput = {
+  id: string,
+  title?: string | null,
+  content?: string | null,
+  draft?: boolean | null,
+  owner?: string | null,
+  _version?: number | null,
+};
+
+export type DeletePostInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreatePostLikeInput = {
+  id?: string | null,
+  postID: string,
+  owner?: string | null,
+  _version?: number | null,
+};
+
+export type ModelPostLikeConditionInput = {
+  postID?: ModelIDInput | null,
+  owner?: ModelStringInput | null,
+  and?: Array< ModelPostLikeConditionInput | null > | null,
+  or?: Array< ModelPostLikeConditionInput | null > | null,
+  not?: ModelPostLikeConditionInput | null,
+};
+
 export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
@@ -86,121 +192,11 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type Post = {
-  __typename: "Post",
-  id: string,
-  title: string,
-  content: string,
-  draft: boolean,
-  comments?: ModelCommentConnection | null,
-  likes?: ModelPostLikeConnection | null,
-  selectedComment?: Comment | null,
-  owner?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  postSelectedCommentId?: string | null,
-};
-
-export type ModelCommentConnection = {
-  __typename: "ModelCommentConnection",
-  items:  Array<Comment | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type Comment = {
-  __typename: "Comment",
-  id: string,
-  post?: Post | null,
-  content: string,
-  likes?: ModelCommentLikeConnection | null,
-  owner?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  postCommentsId?: string | null,
-};
-
-export type ModelCommentLikeConnection = {
-  __typename: "ModelCommentLikeConnection",
-  items:  Array<CommentLike | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type CommentLike = {
-  __typename: "CommentLike",
-  id: string,
-  comment?: Comment | null,
-  owner?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  commentLikesId?: string | null,
-};
-
-export type ModelPostLikeConnection = {
-  __typename: "ModelPostLikeConnection",
-  items:  Array<PostLike | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type PostLike = {
-  __typename: "PostLike",
-  id: string,
-  post?: Post | null,
-  owner?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  postLikesId?: string | null,
-};
-
-export type UpdatePostInput = {
-  id: string,
-  title?: string | null,
-  content?: string | null,
-  draft?: boolean | null,
-  owner?: string | null,
-  _version?: number | null,
-  postSelectedCommentId?: string | null,
-};
-
-export type DeletePostInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreatePostLikeInput = {
-  id?: string | null,
-  owner?: string | null,
-  _version?: number | null,
-  postLikesId?: string | null,
-};
-
-export type ModelPostLikeConditionInput = {
-  owner?: ModelStringInput | null,
-  and?: Array< ModelPostLikeConditionInput | null > | null,
-  or?: Array< ModelPostLikeConditionInput | null > | null,
-  not?: ModelPostLikeConditionInput | null,
-  postLikesId?: ModelIDInput | null,
-};
-
 export type UpdatePostLikeInput = {
   id: string,
+  postID?: string | null,
   owner?: string | null,
   _version?: number | null,
-  postLikesId?: string | null,
 };
 
 export type DeletePostLikeInput = {
@@ -210,27 +206,27 @@ export type DeletePostLikeInput = {
 
 export type CreateCommentInput = {
   id?: string | null,
+  postID: string,
   content: string,
   owner?: string | null,
   _version?: number | null,
-  postCommentsId?: string | null,
 };
 
 export type ModelCommentConditionInput = {
+  postID?: ModelIDInput | null,
   content?: ModelStringInput | null,
   owner?: ModelStringInput | null,
   and?: Array< ModelCommentConditionInput | null > | null,
   or?: Array< ModelCommentConditionInput | null > | null,
   not?: ModelCommentConditionInput | null,
-  postCommentsId?: ModelIDInput | null,
 };
 
 export type UpdateCommentInput = {
   id: string,
+  postID?: string | null,
   content?: string | null,
   owner?: string | null,
   _version?: number | null,
-  postCommentsId?: string | null,
 };
 
 export type DeleteCommentInput = {
@@ -240,24 +236,24 @@ export type DeleteCommentInput = {
 
 export type CreateCommentLikeInput = {
   id?: string | null,
+  commentID: string,
   owner?: string | null,
   _version?: number | null,
-  commentLikesId?: string | null,
 };
 
 export type ModelCommentLikeConditionInput = {
+  commentID?: ModelIDInput | null,
   owner?: ModelStringInput | null,
   and?: Array< ModelCommentLikeConditionInput | null > | null,
   or?: Array< ModelCommentLikeConditionInput | null > | null,
   not?: ModelCommentLikeConditionInput | null,
-  commentLikesId?: ModelIDInput | null,
 };
 
 export type UpdateCommentLikeInput = {
   id: string,
+  commentID?: string | null,
   owner?: string | null,
   _version?: number | null,
-  commentLikesId?: string | null,
 };
 
 export type DeleteCommentLikeInput = {
@@ -274,7 +270,6 @@ export type ModelPostFilterInput = {
   and?: Array< ModelPostFilterInput | null > | null,
   or?: Array< ModelPostFilterInput | null > | null,
   not?: ModelPostFilterInput | null,
-  postSelectedCommentId?: ModelIDInput | null,
 };
 
 export type ModelPostConnection = {
@@ -286,30 +281,30 @@ export type ModelPostConnection = {
 
 export type ModelPostLikeFilterInput = {
   id?: ModelIDInput | null,
+  postID?: ModelIDInput | null,
   owner?: ModelStringInput | null,
   and?: Array< ModelPostLikeFilterInput | null > | null,
   or?: Array< ModelPostLikeFilterInput | null > | null,
   not?: ModelPostLikeFilterInput | null,
-  postLikesId?: ModelIDInput | null,
 };
 
 export type ModelCommentFilterInput = {
   id?: ModelIDInput | null,
+  postID?: ModelIDInput | null,
   content?: ModelStringInput | null,
   owner?: ModelStringInput | null,
   and?: Array< ModelCommentFilterInput | null > | null,
   or?: Array< ModelCommentFilterInput | null > | null,
   not?: ModelCommentFilterInput | null,
-  postCommentsId?: ModelIDInput | null,
 };
 
 export type ModelCommentLikeFilterInput = {
   id?: ModelIDInput | null,
+  commentID?: ModelIDInput | null,
   owner?: ModelStringInput | null,
   and?: Array< ModelCommentLikeFilterInput | null > | null,
   or?: Array< ModelCommentLikeFilterInput | null > | null,
   not?: ModelCommentLikeFilterInput | null,
-  commentLikesId?: ModelIDInput | null,
 };
 
 export type CreatePostMutationVariables = {
@@ -329,6 +324,7 @@ export type CreatePostMutation = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -336,7 +332,6 @@ export type CreatePostMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -346,13 +341,13 @@ export type CreatePostMutation = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -360,6 +355,7 @@ export type CreatePostMutation = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -372,7 +368,6 @@ export type CreatePostMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -386,7 +381,6 @@ export type CreatePostMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -394,7 +388,6 @@ export type CreatePostMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -415,6 +408,7 @@ export type UpdatePostMutation = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -422,7 +416,6 @@ export type UpdatePostMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -432,13 +425,13 @@ export type UpdatePostMutation = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -446,6 +439,7 @@ export type UpdatePostMutation = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -458,7 +452,6 @@ export type UpdatePostMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -472,7 +465,6 @@ export type UpdatePostMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -480,7 +472,6 @@ export type UpdatePostMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -501,6 +492,7 @@ export type DeletePostMutation = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -508,7 +500,6 @@ export type DeletePostMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -518,13 +509,13 @@ export type DeletePostMutation = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -532,6 +523,7 @@ export type DeletePostMutation = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -544,7 +536,6 @@ export type DeletePostMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -558,7 +549,6 @@ export type DeletePostMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -566,7 +556,6 @@ export type DeletePostMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -579,6 +568,7 @@ export type CreatePostLikeMutation = {
   createPostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -598,6 +588,7 @@ export type CreatePostLikeMutation = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -605,7 +596,6 @@ export type CreatePostLikeMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -613,7 +603,6 @@ export type CreatePostLikeMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -621,7 +610,6 @@ export type CreatePostLikeMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -634,6 +622,7 @@ export type UpdatePostLikeMutation = {
   updatePostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -653,6 +642,7 @@ export type UpdatePostLikeMutation = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -660,7 +650,6 @@ export type UpdatePostLikeMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -668,7 +657,6 @@ export type UpdatePostLikeMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -676,7 +664,6 @@ export type UpdatePostLikeMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -689,6 +676,7 @@ export type DeletePostLikeMutation = {
   deletePostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -708,6 +696,7 @@ export type DeletePostLikeMutation = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -715,7 +704,6 @@ export type DeletePostLikeMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -723,7 +711,6 @@ export type DeletePostLikeMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -731,7 +718,6 @@ export type DeletePostLikeMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -744,6 +730,7 @@ export type CreateCommentMutation = {
   createComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -763,6 +750,7 @@ export type CreateCommentMutation = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -770,7 +758,6 @@ export type CreateCommentMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -778,7 +765,6 @@ export type CreateCommentMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -786,13 +772,13 @@ export type CreateCommentMutation = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -803,7 +789,6 @@ export type CreateCommentMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -816,6 +801,7 @@ export type UpdateCommentMutation = {
   updateComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -835,6 +821,7 @@ export type UpdateCommentMutation = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -842,7 +829,6 @@ export type UpdateCommentMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -850,7 +836,6 @@ export type UpdateCommentMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -858,13 +843,13 @@ export type UpdateCommentMutation = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -875,7 +860,6 @@ export type UpdateCommentMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -888,6 +872,7 @@ export type DeleteCommentMutation = {
   deleteComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -907,6 +892,7 @@ export type DeleteCommentMutation = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -914,7 +900,6 @@ export type DeleteCommentMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -922,7 +907,6 @@ export type DeleteCommentMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -930,13 +914,13 @@ export type DeleteCommentMutation = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -947,7 +931,6 @@ export type DeleteCommentMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -960,9 +943,11 @@ export type CreateCommentLikeMutation = {
   createCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -975,7 +960,6 @@ export type CreateCommentLikeMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -989,7 +973,6 @@ export type CreateCommentLikeMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -997,7 +980,6 @@ export type CreateCommentLikeMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };
 
@@ -1010,9 +992,11 @@ export type UpdateCommentLikeMutation = {
   updateCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1025,7 +1009,6 @@ export type UpdateCommentLikeMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1039,7 +1022,6 @@ export type UpdateCommentLikeMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1047,7 +1029,6 @@ export type UpdateCommentLikeMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };
 
@@ -1060,9 +1041,11 @@ export type DeleteCommentLikeMutation = {
   deleteCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1075,7 +1058,6 @@ export type DeleteCommentLikeMutation = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1089,7 +1071,6 @@ export type DeleteCommentLikeMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1097,7 +1078,6 @@ export type DeleteCommentLikeMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };
 
@@ -1117,6 +1097,7 @@ export type GetPostQuery = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1124,7 +1105,6 @@ export type GetPostQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1134,13 +1114,13 @@ export type GetPostQuery = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1148,6 +1128,7 @@ export type GetPostQuery = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1160,7 +1141,6 @@ export type GetPostQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1174,7 +1154,6 @@ export type GetPostQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1182,7 +1161,6 @@ export type GetPostQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -1214,6 +1192,7 @@ export type ListPostsQuery = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1221,7 +1200,6 @@ export type ListPostsQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1229,7 +1207,6 @@ export type ListPostsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1265,6 +1242,7 @@ export type SyncPostsQuery = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1272,7 +1250,6 @@ export type SyncPostsQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1280,7 +1257,6 @@ export type SyncPostsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1295,6 +1271,7 @@ export type GetPostLikeQuery = {
   getPostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -1314,6 +1291,7 @@ export type GetPostLikeQuery = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1321,7 +1299,6 @@ export type GetPostLikeQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1329,7 +1306,6 @@ export type GetPostLikeQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1337,7 +1313,6 @@ export type GetPostLikeQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -1353,6 +1328,7 @@ export type ListPostLikesQuery = {
     items:  Array< {
       __typename: "PostLike",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1365,7 +1341,6 @@ export type ListPostLikesQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1373,7 +1348,6 @@ export type ListPostLikesQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postLikesId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1393,6 +1367,7 @@ export type SyncPostLikesQuery = {
     items:  Array< {
       __typename: "PostLike",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1405,7 +1380,6 @@ export type SyncPostLikesQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1413,7 +1387,6 @@ export type SyncPostLikesQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postLikesId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1428,6 +1401,7 @@ export type GetCommentQuery = {
   getComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -1447,6 +1421,7 @@ export type GetCommentQuery = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1454,7 +1429,6 @@ export type GetCommentQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1462,7 +1436,6 @@ export type GetCommentQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -1470,13 +1443,13 @@ export type GetCommentQuery = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1487,7 +1460,6 @@ export type GetCommentQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -1503,6 +1475,7 @@ export type ListCommentsQuery = {
     items:  Array< {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1515,7 +1488,6 @@ export type ListCommentsQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1529,7 +1501,6 @@ export type ListCommentsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1549,6 +1520,7 @@ export type SyncCommentsQuery = {
     items:  Array< {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1561,7 +1533,6 @@ export type SyncCommentsQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1575,7 +1546,6 @@ export type SyncCommentsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1590,9 +1560,11 @@ export type GetCommentLikeQuery = {
   getCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1605,7 +1577,6 @@ export type GetCommentLikeQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1619,7 +1590,6 @@ export type GetCommentLikeQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1627,7 +1597,6 @@ export type GetCommentLikeQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };
 
@@ -1643,9 +1612,11 @@ export type ListCommentLikesQuery = {
     items:  Array< {
       __typename: "CommentLike",
       id: string,
+      commentID: string,
       comment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1653,7 +1624,6 @@ export type ListCommentLikesQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1661,7 +1631,6 @@ export type ListCommentLikesQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      commentLikesId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1681,9 +1650,11 @@ export type SyncCommentLikesQuery = {
     items:  Array< {
       __typename: "CommentLike",
       id: string,
+      commentID: string,
       comment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1691,7 +1662,6 @@ export type SyncCommentLikesQuery = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -1699,7 +1669,6 @@ export type SyncCommentLikesQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      commentLikesId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1722,6 +1691,7 @@ export type OnCreatePostSubscription = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1729,7 +1699,6 @@ export type OnCreatePostSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1739,13 +1708,13 @@ export type OnCreatePostSubscription = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1753,6 +1722,7 @@ export type OnCreatePostSubscription = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1765,7 +1735,6 @@ export type OnCreatePostSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1779,7 +1748,6 @@ export type OnCreatePostSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1787,7 +1755,6 @@ export type OnCreatePostSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -1807,6 +1774,7 @@ export type OnUpdatePostSubscription = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1814,7 +1782,6 @@ export type OnUpdatePostSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1824,13 +1791,13 @@ export type OnUpdatePostSubscription = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1838,6 +1805,7 @@ export type OnUpdatePostSubscription = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1850,7 +1818,6 @@ export type OnUpdatePostSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1864,7 +1831,6 @@ export type OnUpdatePostSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1872,7 +1838,6 @@ export type OnUpdatePostSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -1892,6 +1857,7 @@ export type OnDeletePostSubscription = {
       items:  Array< {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1899,7 +1865,6 @@ export type OnDeletePostSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1909,13 +1874,13 @@ export type OnDeletePostSubscription = {
       items:  Array< {
         __typename: "PostLike",
         id: string,
+        postID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1923,6 +1888,7 @@ export type OnDeletePostSubscription = {
     selectedComment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -1935,7 +1901,6 @@ export type OnDeletePostSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -1949,7 +1914,6 @@ export type OnDeletePostSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -1957,7 +1921,6 @@ export type OnDeletePostSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postSelectedCommentId?: string | null,
   } | null,
 };
 
@@ -1969,6 +1932,7 @@ export type OnCreatePostLikeSubscription = {
   onCreatePostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -1988,6 +1952,7 @@ export type OnCreatePostLikeSubscription = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -1995,7 +1960,6 @@ export type OnCreatePostLikeSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -2003,7 +1967,6 @@ export type OnCreatePostLikeSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -2011,7 +1974,6 @@ export type OnCreatePostLikeSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -2023,6 +1985,7 @@ export type OnUpdatePostLikeSubscription = {
   onUpdatePostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -2042,6 +2005,7 @@ export type OnUpdatePostLikeSubscription = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -2049,7 +2013,6 @@ export type OnUpdatePostLikeSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -2057,7 +2020,6 @@ export type OnUpdatePostLikeSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -2065,7 +2027,6 @@ export type OnUpdatePostLikeSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -2077,6 +2038,7 @@ export type OnDeletePostLikeSubscription = {
   onDeletePostLike?:  {
     __typename: "PostLike",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -2096,6 +2058,7 @@ export type OnDeletePostLikeSubscription = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -2103,7 +2066,6 @@ export type OnDeletePostLikeSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -2111,7 +2073,6 @@ export type OnDeletePostLikeSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -2119,7 +2080,6 @@ export type OnDeletePostLikeSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postLikesId?: string | null,
   } | null,
 };
 
@@ -2131,6 +2091,7 @@ export type OnCreateCommentSubscription = {
   onCreateComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -2150,6 +2111,7 @@ export type OnCreateCommentSubscription = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -2157,7 +2119,6 @@ export type OnCreateCommentSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -2165,7 +2126,6 @@ export type OnCreateCommentSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -2173,13 +2133,13 @@ export type OnCreateCommentSubscription = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -2190,7 +2150,6 @@ export type OnCreateCommentSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -2202,6 +2161,7 @@ export type OnUpdateCommentSubscription = {
   onUpdateComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -2221,6 +2181,7 @@ export type OnUpdateCommentSubscription = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -2228,7 +2189,6 @@ export type OnUpdateCommentSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -2236,7 +2196,6 @@ export type OnUpdateCommentSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -2244,13 +2203,13 @@ export type OnUpdateCommentSubscription = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -2261,7 +2220,6 @@ export type OnUpdateCommentSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -2273,6 +2231,7 @@ export type OnDeleteCommentSubscription = {
   onDeleteComment?:  {
     __typename: "Comment",
     id: string,
+    postID: string,
     post?:  {
       __typename: "Post",
       id: string,
@@ -2292,6 +2251,7 @@ export type OnDeleteCommentSubscription = {
       selectedComment?:  {
         __typename: "Comment",
         id: string,
+        postID: string,
         content: string,
         owner?: string | null,
         createdAt: string,
@@ -2299,7 +2259,6 @@ export type OnDeleteCommentSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
       } | null,
       owner?: string | null,
       createdAt: string,
@@ -2307,7 +2266,6 @@ export type OnDeleteCommentSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postSelectedCommentId?: string | null,
     } | null,
     content: string,
     likes?:  {
@@ -2315,13 +2273,13 @@ export type OnDeleteCommentSubscription = {
       items:  Array< {
         __typename: "CommentLike",
         id: string,
+        commentID: string,
         owner?: string | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        commentLikesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -2332,7 +2290,6 @@ export type OnDeleteCommentSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
   } | null,
 };
 
@@ -2344,9 +2301,11 @@ export type OnCreateCommentLikeSubscription = {
   onCreateCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -2359,7 +2318,6 @@ export type OnCreateCommentLikeSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -2373,7 +2331,6 @@ export type OnCreateCommentLikeSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -2381,7 +2338,6 @@ export type OnCreateCommentLikeSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };
 
@@ -2393,9 +2349,11 @@ export type OnUpdateCommentLikeSubscription = {
   onUpdateCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -2408,7 +2366,6 @@ export type OnUpdateCommentLikeSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -2422,7 +2379,6 @@ export type OnUpdateCommentLikeSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -2430,7 +2386,6 @@ export type OnUpdateCommentLikeSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };
 
@@ -2442,9 +2397,11 @@ export type OnDeleteCommentLikeSubscription = {
   onDeleteCommentLike?:  {
     __typename: "CommentLike",
     id: string,
+    commentID: string,
     comment?:  {
       __typename: "Comment",
       id: string,
+      postID: string,
       post?:  {
         __typename: "Post",
         id: string,
@@ -2457,7 +2414,6 @@ export type OnDeleteCommentLikeSubscription = {
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postSelectedCommentId?: string | null,
       } | null,
       content: string,
       likes?:  {
@@ -2471,7 +2427,6 @@ export type OnDeleteCommentLikeSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
     } | null,
     owner?: string | null,
     createdAt: string,
@@ -2479,6 +2434,5 @@ export type OnDeleteCommentLikeSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    commentLikesId?: string | null,
   } | null,
 };

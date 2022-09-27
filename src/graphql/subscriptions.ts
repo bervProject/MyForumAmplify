@@ -12,6 +12,7 @@ export const onCreatePost = /* GraphQL */ `
       comments {
         items {
           id
+          postID
           content
           owner
           createdAt
@@ -19,7 +20,6 @@ export const onCreatePost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         nextToken
         startedAt
@@ -27,19 +27,20 @@ export const onCreatePost = /* GraphQL */ `
       likes {
         items {
           id
+          postID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postLikesId
         }
         nextToken
         startedAt
       }
       selectedComment {
         id
+        postID
         post {
           id
           title
@@ -51,7 +52,6 @@ export const onCreatePost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -64,7 +64,6 @@ export const onCreatePost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -72,7 +71,6 @@ export const onCreatePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postSelectedCommentId
     }
   }
 `;
@@ -86,6 +84,7 @@ export const onUpdatePost = /* GraphQL */ `
       comments {
         items {
           id
+          postID
           content
           owner
           createdAt
@@ -93,7 +92,6 @@ export const onUpdatePost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         nextToken
         startedAt
@@ -101,19 +99,20 @@ export const onUpdatePost = /* GraphQL */ `
       likes {
         items {
           id
+          postID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postLikesId
         }
         nextToken
         startedAt
       }
       selectedComment {
         id
+        postID
         post {
           id
           title
@@ -125,7 +124,6 @@ export const onUpdatePost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -138,7 +136,6 @@ export const onUpdatePost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -146,7 +143,6 @@ export const onUpdatePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postSelectedCommentId
     }
   }
 `;
@@ -160,6 +156,7 @@ export const onDeletePost = /* GraphQL */ `
       comments {
         items {
           id
+          postID
           content
           owner
           createdAt
@@ -167,7 +164,6 @@ export const onDeletePost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         nextToken
         startedAt
@@ -175,19 +171,20 @@ export const onDeletePost = /* GraphQL */ `
       likes {
         items {
           id
+          postID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postLikesId
         }
         nextToken
         startedAt
       }
       selectedComment {
         id
+        postID
         post {
           id
           title
@@ -199,7 +196,6 @@ export const onDeletePost = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -212,7 +208,6 @@ export const onDeletePost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -220,7 +215,6 @@ export const onDeletePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postSelectedCommentId
     }
   }
 `;
@@ -228,6 +222,7 @@ export const onCreatePostLike = /* GraphQL */ `
   subscription OnCreatePostLike($owner: String) {
     onCreatePostLike(owner: $owner) {
       id
+      postID
       post {
         id
         title
@@ -243,6 +238,7 @@ export const onCreatePostLike = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -250,7 +246,6 @@ export const onCreatePostLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -258,7 +253,6 @@ export const onCreatePostLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       owner
       createdAt
@@ -266,7 +260,6 @@ export const onCreatePostLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postLikesId
     }
   }
 `;
@@ -274,6 +267,7 @@ export const onUpdatePostLike = /* GraphQL */ `
   subscription OnUpdatePostLike($owner: String) {
     onUpdatePostLike(owner: $owner) {
       id
+      postID
       post {
         id
         title
@@ -289,6 +283,7 @@ export const onUpdatePostLike = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -296,7 +291,6 @@ export const onUpdatePostLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -304,7 +298,6 @@ export const onUpdatePostLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       owner
       createdAt
@@ -312,7 +305,6 @@ export const onUpdatePostLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postLikesId
     }
   }
 `;
@@ -320,6 +312,7 @@ export const onDeletePostLike = /* GraphQL */ `
   subscription OnDeletePostLike($owner: String) {
     onDeletePostLike(owner: $owner) {
       id
+      postID
       post {
         id
         title
@@ -335,6 +328,7 @@ export const onDeletePostLike = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -342,7 +336,6 @@ export const onDeletePostLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -350,7 +343,6 @@ export const onDeletePostLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       owner
       createdAt
@@ -358,7 +350,6 @@ export const onDeletePostLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postLikesId
     }
   }
 `;
@@ -366,6 +357,7 @@ export const onCreateComment = /* GraphQL */ `
   subscription OnCreateComment($owner: String) {
     onCreateComment(owner: $owner) {
       id
+      postID
       post {
         id
         title
@@ -381,6 +373,7 @@ export const onCreateComment = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -388,7 +381,6 @@ export const onCreateComment = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -396,19 +388,18 @@ export const onCreateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       content
       likes {
         items {
           id
+          commentID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          commentLikesId
         }
         nextToken
         startedAt
@@ -419,7 +410,6 @@ export const onCreateComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
     }
   }
 `;
@@ -427,6 +417,7 @@ export const onUpdateComment = /* GraphQL */ `
   subscription OnUpdateComment($owner: String) {
     onUpdateComment(owner: $owner) {
       id
+      postID
       post {
         id
         title
@@ -442,6 +433,7 @@ export const onUpdateComment = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -449,7 +441,6 @@ export const onUpdateComment = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -457,19 +448,18 @@ export const onUpdateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       content
       likes {
         items {
           id
+          commentID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          commentLikesId
         }
         nextToken
         startedAt
@@ -480,7 +470,6 @@ export const onUpdateComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
     }
   }
 `;
@@ -488,6 +477,7 @@ export const onDeleteComment = /* GraphQL */ `
   subscription OnDeleteComment($owner: String) {
     onDeleteComment(owner: $owner) {
       id
+      postID
       post {
         id
         title
@@ -503,6 +493,7 @@ export const onDeleteComment = /* GraphQL */ `
         }
         selectedComment {
           id
+          postID
           content
           owner
           createdAt
@@ -510,7 +501,6 @@ export const onDeleteComment = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
         }
         owner
         createdAt
@@ -518,19 +508,18 @@ export const onDeleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postSelectedCommentId
       }
       content
       likes {
         items {
           id
+          commentID
           owner
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          commentLikesId
         }
         nextToken
         startedAt
@@ -541,7 +530,6 @@ export const onDeleteComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
     }
   }
 `;
@@ -549,8 +537,10 @@ export const onCreateCommentLike = /* GraphQL */ `
   subscription OnCreateCommentLike($owner: String) {
     onCreateCommentLike(owner: $owner) {
       id
+      commentID
       comment {
         id
+        postID
         post {
           id
           title
@@ -562,7 +552,6 @@ export const onCreateCommentLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -575,7 +564,6 @@ export const onCreateCommentLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -583,7 +571,6 @@ export const onCreateCommentLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      commentLikesId
     }
   }
 `;
@@ -591,8 +578,10 @@ export const onUpdateCommentLike = /* GraphQL */ `
   subscription OnUpdateCommentLike($owner: String) {
     onUpdateCommentLike(owner: $owner) {
       id
+      commentID
       comment {
         id
+        postID
         post {
           id
           title
@@ -604,7 +593,6 @@ export const onUpdateCommentLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -617,7 +605,6 @@ export const onUpdateCommentLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -625,7 +612,6 @@ export const onUpdateCommentLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      commentLikesId
     }
   }
 `;
@@ -633,8 +619,10 @@ export const onDeleteCommentLike = /* GraphQL */ `
   subscription OnDeleteCommentLike($owner: String) {
     onDeleteCommentLike(owner: $owner) {
       id
+      commentID
       comment {
         id
+        postID
         post {
           id
           title
@@ -646,7 +634,6 @@ export const onDeleteCommentLike = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
-          postSelectedCommentId
         }
         content
         likes {
@@ -659,7 +646,6 @@ export const onDeleteCommentLike = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
       }
       owner
       createdAt
@@ -667,7 +653,6 @@ export const onDeleteCommentLike = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      commentLikesId
     }
   }
 `;
