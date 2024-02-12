@@ -11,7 +11,7 @@
     "@types/node": "^20.11.17",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "aws-amplify": "^6.0.15",
+    "aws-amplify": "^6.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
