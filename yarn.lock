@@ -65,10 +65,10 @@
     "@aws-amplify/api-rest" "4.0.35"
     tslib "^2.5.0"
 
-"@aws-amplify/auth@6.3.5":
-  version "6.3.5"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-6.3.5.tgz#d1526c1a61a97aea42a024a5c7af36aff64f4e39"
-  integrity sha512-vPg+ipug3S1Q698ixWg+q7GV5qOrJJSMZQ0oTLmy1sPcb/o7SJLd6DmwrmguDfgue6x6JDELSAZjaKKJZerA3g==
+"@aws-amplify/auth@6.3.6":
+  version "6.3.6"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-6.3.6.tgz#43451a5e1d785a7235a9c0cda740d64fadfffed4"
+  integrity sha512-K9Ln92gC2qpaVkYdE8V4Ldiad609k+7PkWEF+ZHUc5qqAdf57PY4sF0VAoUKL0IqNOpVXi7LAA5n5CLEd/Zo/g==
   dependencies:
     tslib "^2.5.0"
 
@@ -4162,14 +4162,14 @@ autoprefixer@^10.4.8:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
-aws-amplify@^6.3.6:
-  version "6.3.6"
-  resolved "https://registry.yarnpkg.com/aws-amplify/-/aws-amplify-6.3.6.tgz#6e349804bbdcd0c618082903a1e0a6319e1d8e7e"
-  integrity sha512-haG8Z2PErWS1KoSZ5z+vuQ6Au/cXn0eAMSruur+Ku+vFWXrKUEq0uI8SvAw5rJ6B2BDJEdMMzDnOb+hDuY5lew==
+aws-amplify@^6.3.7:
+  version "6.3.7"
+  resolved "https://registry.yarnpkg.com/aws-amplify/-/aws-amplify-6.3.7.tgz#df948f794a6d690c823802a4c8f8dcd8e8b99b7d"
+  integrity sha512-dKmiCtEQPedHiaSk7LXIPkfGDgMZcbd9Xz6+IlO3pbf6B3SVahPSwGr/kQGrNBPD/nwvNtokHl6XfDYuZh9n8A==
   dependencies:
     "@aws-amplify/analytics" "7.0.35"
     "@aws-amplify/api" "6.0.37"
-    "@aws-amplify/auth" "6.3.5"
+    "@aws-amplify/auth" "6.3.6"
     "@aws-amplify/core" "6.3.2"
     "@aws-amplify/datastore" "5.0.37"
     "@aws-amplify/notifications" "2.0.35"
