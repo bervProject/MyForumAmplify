@@ -151,10 +151,10 @@
     react-hook-form "^7.43.5"
     xstate "^4.33.6"
 
-"@aws-amplify/ui-react@^6.1.13":
-  version "6.1.13"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.1.13.tgz#407dc5f28e89c3e240e7a9717d11ac5e3f9aef8a"
-  integrity sha512-MPzGQpPR7xvE0VXf09x7yXwdMkdlmMh5HX0IHenrE9vlg7hrMp4yrNU3dQ2jwlIaRNyQ0XDyGs/8ALUxhi8LuA==
+"@aws-amplify/ui-react@^6.1.14":
+  version "6.1.14"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.1.14.tgz#90a0bf96ffb289d43346af983cd906d4e8fae919"
+  integrity sha512-7hbqaY+yU5x4uXo9+3sVPKcDbPV5O6pxyj2NymkZ1cTAtQnc27ke6bXrLFaLXV1EVG8HhVJVntjTfZXh0D+rog==
   dependencies:
     "@aws-amplify/ui" "6.0.17"
     "@aws-amplify/ui-react-core" "3.0.17"
