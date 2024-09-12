@@ -140,24 +140,24 @@
     fast-xml-parser "^4.4.1"
     tslib "^2.5.0"
 
-"@aws-amplify/ui-react-core@3.0.21":
-  version "3.0.21"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react-core/-/ui-react-core-3.0.21.tgz#de7c8343bebf0d6d3f20730be72a0790e3be3d8e"
-  integrity sha512-/KB91bqIZZshu3jYtjHox5/vHyOXD7NRIUqTtD9q61/Pa5JCRAMg/6Tz+eiczgCR3ZSDP8gI7NRYUvUaam682Q==
+"@aws-amplify/ui-react-core@3.0.22":
+  version "3.0.22"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react-core/-/ui-react-core-3.0.22.tgz#e0e78944688308249f9c6783be7cd1efa798f475"
+  integrity sha512-uL5jspqvTZhpqH1inPV3ifvrzIVgIIriXPgjz4BaceDm+1X03Hc3tfq5TiUKW8PdpuWF6riXXBP3MEFsk29OGw==
   dependencies:
-    "@aws-amplify/ui" "6.4.0"
+    "@aws-amplify/ui" "6.4.1"
     "@xstate/react" "^3.2.2"
     lodash "4.17.21"
     react-hook-form "^7.43.5"
     xstate "^4.33.6"
 
-"@aws-amplify/ui-react@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.3.0.tgz#8713dc3fd5b91a037a5488e2d06cdfe3a05760aa"
-  integrity sha512-7j5ynXds8Oljj/CNxNo4caRMKMeBQwX8/ie/fKpGV9/K7oIVfnafjCTUGyUX3mKiTaPFxkT8P/MjWXZwx+sSnw==
+"@aws-amplify/ui-react@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.3.1.tgz#998a3c1b0e273c2a5f7529ba387739e2b18b0e7f"
+  integrity sha512-n/wTjMYYuAhpgpuQ4o+9+IgvNsdjGqbfaA4bAXE7b1apIOfM8HTaO2zant85x+geDl7rbaa1y/z62T4H9AksMQ==
   dependencies:
-    "@aws-amplify/ui" "6.4.0"
-    "@aws-amplify/ui-react-core" "3.0.21"
+    "@aws-amplify/ui" "6.4.1"
+    "@aws-amplify/ui-react-core" "3.0.22"
     "@radix-ui/react-direction" "1.0.0"
     "@radix-ui/react-dropdown-menu" "1.0.0"
     "@radix-ui/react-slider" "1.0.0"
@@ -166,10 +166,10 @@
     qrcode "1.5.0"
     tslib "^2.5.2"
 
-"@aws-amplify/ui@6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui/-/ui-6.4.0.tgz#0ea04c04b4063edba1347b6bf8466252208fe44f"
-  integrity sha512-7NY6fRjjXbR8s+N+c/KoLzCldGZcHNG53FZuQ+8yvm43bVY5KIRkdRd72GS2Vj1OKwf1mzM14NFbjvKgZ81ksw==
+"@aws-amplify/ui@6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui/-/ui-6.4.1.tgz#cd13b86e1c156c45679d7853ae34c8147398e680"
+  integrity sha512-0rGGJjnd60gZNhjqDepk3VpCpzyJDE2+xevVg0iqM8APKpyQ9XRWisNLIvglQy7p/3CauXdw8U0NZVcu29Yhrw==
   dependencies:
     csstype "^3.1.1"
     lodash "4.17.21"
