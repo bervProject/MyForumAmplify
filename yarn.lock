@@ -143,24 +143,24 @@
     fast-xml-parser "^4.4.1"
     tslib "^2.5.0"
 
-"@aws-amplify/ui-react-core@3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react-core/-/ui-react-core-3.1.2.tgz#e0329a5f7c9b34814c536254af28693bfdc9b27d"
-  integrity sha512-hbxXjf05UmQa/om4FEkUKEg2MU18pa1gy7Gk3lOa6L3qpzUC/qfC3D0nOEAfr9IAOSDIpCpvdOhf1ynPqgPw9A==
+"@aws-amplify/ui-react-core@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react-core/-/ui-react-core-3.2.0.tgz#da7a2c12dd47a928cf45142b49711a2660647e5f"
+  integrity sha512-ELN0i4293U9UjwJqvnn6Tx8bq02UGkU0jRTR+RiD90e6tsOG18DL5OQyjGfvpm4aNmhNVTxxLovNFLfghkY97Q==
   dependencies:
     "@aws-amplify/ui" "6.7.2"
     "@xstate/react" "^3.2.2"
     lodash "4.17.21"
-    react-hook-form "^7.43.5"
+    react-hook-form "^7.53.2"
     xstate "^4.33.6"
 
-"@aws-amplify/ui-react@^6.7.2":
-  version "6.7.2"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.7.2.tgz#5aaa1321d304a4cddea4388b479145dacf90dada"
-  integrity sha512-cqQEAjK8aBukFn5fnAuS3SOLtbyWZmTRyPnBMSRmZ4Rce8noSylTi0rolUAEwhBpdbx1TlkzIbnmPJwVXZ73yQ==
+"@aws-amplify/ui-react@^6.8.0":
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.8.0.tgz#48ce9d09889734051f7adedf4ee5a8558356036c"
+  integrity sha512-0tvf0AoZ2jPA2QTrlgHRdDs8PtfmRuqMkdjBEtuWrqjlEJgEyISE1qsH3BqjYPmR7rK6EeMLwmbyM2Ix13AMDw==
   dependencies:
     "@aws-amplify/ui" "6.7.2"
-    "@aws-amplify/ui-react-core" "3.1.2"
+    "@aws-amplify/ui-react-core" "3.2.0"
     "@radix-ui/react-direction" "1.0.0"
     "@radix-ui/react-dropdown-menu" "1.0.0"
     "@radix-ui/react-slider" "1.0.0"
@@ -9163,10 +9163,10 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
-react-hook-form@^7.43.5:
-  version "7.48.2"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.48.2.tgz#01150354d2be61412ff56a030b62a119283b9935"
-  integrity sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==
+react-hook-form@^7.53.2:
+  version "7.54.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.54.2.tgz#8c26ed54c71628dff57ccd3c074b1dd377cfb211"
+  integrity sha512-eHpAUgUjWbZocoQYUHposymRb4ZP6d0uwUnooL2uOybA9/3tPUvoAKqEWK1WaSiTxxOfTpffNZP7QwlnM3/gEg==
 
 react-is@^16.13.1:
   version "16.13.1"
