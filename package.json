@@ -10,7 +10,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^24.7.0",
     "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
+    "@types/react-dom": "^19.2.1",
     "aws-amplify": "^6.15.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
