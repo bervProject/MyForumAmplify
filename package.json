@@ -12,7 +12,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "aws-amplify": "^6.15.9",
-    "react": "^19.2.1",
+    "react": "^19.2.3",
     "react-dom": "^19.2.1",
     "react-router-dom": "^7.10.1",
     "react-scripts": "5.0.1",
