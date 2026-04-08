@@ -149,39 +149,39 @@
     fast-xml-parser "^5.3.6"
     tslib "^2.5.0"
 
-"@aws-amplify/ui-react-core@3.6.2":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react-core/-/ui-react-core-3.6.2.tgz#b9b3306a90d677644602f7f2b49507bc7a7a57fb"
-  integrity sha512-wVyE9DFMJebGp1pLkcvohtGPFL6fpXH7lHiU/1fndPLUrUpHJFxslHAT3LGTwztThC27iM3hap+BcEewFiaqJA==
+"@aws-amplify/ui-react-core@3.6.3":
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react-core/-/ui-react-core-3.6.3.tgz#b478828e1b38e1ae43fd7ecb22f6afb9390661f8"
+  integrity sha512-MnAvj/sy/S6i9o/jCImgKTwvGosWB3tYIgenvE07C/aWJgTe02DyN7RAG1ueTqe+V8QzEJvYc0tgVuwmiwIK+A==
   dependencies:
-    "@aws-amplify/ui" "6.15.2"
+    "@aws-amplify/ui" "6.15.3"
     "@xstate/react" "^3.2.2"
-    lodash "4.17.23"
+    lodash "4.18.1"
     react-hook-form "7.53.2"
     xstate "^4.33.6"
 
-"@aws-amplify/ui-react@^6.15.2":
-  version "6.15.2"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.15.2.tgz#6454ea7823b3968ee4905c095d94de51a267f63e"
-  integrity sha512-8eXVnyl8eLPKGXaJ3CEt1mNwWKJ98El5nVz9NnKzoW1/B5cPhc96yVzIzHmyAyMROLKArzWOC4unx/RLN1YDBA==
+"@aws-amplify/ui-react@^6.15.3":
+  version "6.15.3"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui-react/-/ui-react-6.15.3.tgz#4de1c5521750771cb77452fd7e06dfe3d1fdd0e4"
+  integrity sha512-S4AfhC+NGpMsIaCoXaQZhCQ+fhBzxkIUBVvNK+g8dYVO/wM9tMAxwESenZfuW+MmrFMTAAVtafoX7TCFAEHdCg==
   dependencies:
-    "@aws-amplify/ui" "6.15.2"
-    "@aws-amplify/ui-react-core" "3.6.2"
+    "@aws-amplify/ui" "6.15.3"
+    "@aws-amplify/ui-react-core" "3.6.3"
     "@radix-ui/react-direction" "^1.1.0"
     "@radix-ui/react-dropdown-menu" "^2.1.10"
     "@radix-ui/react-slider" "^1.3.2"
     "@xstate/react" "^3.2.2"
-    lodash "4.17.23"
+    lodash "4.18.1"
     qrcode "1.5.0"
     tslib "^2.5.2"
 
-"@aws-amplify/ui@6.15.2":
-  version "6.15.2"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/ui/-/ui-6.15.2.tgz#a0dfb41d93cf724446ff74f1834b2f0e971ee78f"
-  integrity sha512-w8ElY62cjBIKGOPEkEMXAtwrAoDYMLizfdIuR3KWDI8ta8Riv0l8nZt7N2EtraUnD7RxWUKgzR3kcBtFoPUbRA==
+"@aws-amplify/ui@6.15.3":
+  version "6.15.3"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/ui/-/ui-6.15.3.tgz#96f6aa4e79be250740b1b55275d05f8cfd0e74d6"
+  integrity sha512-fJktaSs2oKQGXuriQJ8saDMQJZTff6VeTIYaJjNNuIpu2ZQI21WdPZRzD/nMm0i+OQYUo1Lt2LaV5NxbEGaIgw==
   dependencies:
     csstype "^3.1.1"
-    lodash "4.17.23"
+    lodash "4.18.1"
     tslib "^2.5.2"
 
 "@aws-crypto/crc32@5.2.0":
@@ -8063,10 +8063,10 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==
 
-lodash@4.17.23, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
-  version "4.17.23"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.23.tgz#f113b0378386103be4f6893388c73d0bde7f2c5a"
-  integrity sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==
+lodash@4.18.1, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.18.1.tgz#ff2b66c1f6326d59513de2407bf881439812771c"
+  integrity sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==
 
 loose-envify@^1.4.0:
   version "1.4.0"
