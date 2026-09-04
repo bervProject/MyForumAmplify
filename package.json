@@ -6,7 +6,7 @@
     "@aws-amplify/ui-react": "^6.15.6",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
+    "@testing-library/user-event": "^14.6.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
