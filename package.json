@@ -14,7 +14,7 @@
     "aws-amplify": "^6.20.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-router-dom": "^7.18.3",
+    "react-router-dom": "^7.18.4",
     "react-scripts": "5.0.1",
     "typescript": "^7.0.2",
     "web-vitals": "^6.2.2"
